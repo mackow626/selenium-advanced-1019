@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class BasePage {
@@ -20,7 +21,7 @@ public class BasePage {
         this.driver = driver;
         defaultWait = new WebDriverWait(driver, 10);
         actionDriver = new Actions(driver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     public void click(WebElement element) {
@@ -57,5 +58,13 @@ public class BasePage {
         Random rnd = new Random();
         int randomNumber = rnd.nextInt(elements.size() - 1);
         return elements.get(randomNumber);
+    }
+
+    public boolean isPresent(WebElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }
