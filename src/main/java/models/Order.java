@@ -12,6 +12,11 @@ public class Order {
         products = new ArrayList<>();
     }
 
+    public Order(List<Product> products, BigDecimal totalOrderPrice) {
+        this.products = products;
+        this.totalOrderPrice = totalOrderPrice;
+    }
+
     private void updateTotalPrice() {
         totalOrderPrice = new BigDecimal(0);
         for (Product product : products) {
@@ -32,8 +37,10 @@ public class Order {
     }
 
     public int getTotalQuantity() {
-        return products.stream()
-                .mapToInt(Product::getQuantity)
-                .sum();
+        int sum = 0;
+        for (Product product : products) {
+            sum += product.getQuantity();
+        }
+        return sum;
     }
 }

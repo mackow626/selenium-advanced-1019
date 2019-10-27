@@ -2,6 +2,7 @@ package pages.products;
 
 import models.Order;
 import models.Product;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -48,5 +49,6 @@ public class ProductDetailsPage extends BasePage {
         Product productToSave = new Product(getName(), getPrice(), getQuantity());
         expectedOrder.addProduct(productToSave);
         click(addToCartButton);
+        waitForVisibilityOf(By.id("myModalLabel"));
     }
 }

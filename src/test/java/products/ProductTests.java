@@ -65,6 +65,7 @@ public class ProductTests extends BaseTest {
 
         ProductDetailsPage productDetailsPage = new ProductDetailsPage(getDriver());
         Assert.assertTrue(productDetailsPage.getName().contains(expectedName));
+
     }
 
 }

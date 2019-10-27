@@ -25,6 +25,13 @@ public class Product {
         updatePrice();
     }
 
+    public Product(String name, BigDecimal price, int quantity, BigDecimal totalPrice) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+    }
+
     public void addQuantity(int quantity) {
         this.quantity += quantity;
         updatePrice();

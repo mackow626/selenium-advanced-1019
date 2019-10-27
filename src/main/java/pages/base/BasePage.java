@@ -46,19 +46,19 @@ public class BasePage {
         element.sendKeys(text);
     }
 
-    protected void elementToBeClickable(WebElement element) {
+    protected void waitForElementToBeClickable(WebElement element) {
         defaultWait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    protected WebElement elementToBeClickable(By by) {
+    protected WebElement waitForElementToBeClickable(By by) {
         return defaultWait.until(ExpectedConditions.elementToBeClickable(by));
     }
 
-    protected void visibilityOf(WebElement element) {
+    protected void waitForVisibilityOf(WebElement element) {
         defaultWait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    protected WebElement visibilityOf(By by) {
+    protected WebElement waitForVisibilityOf(By by) {
         return defaultWait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
