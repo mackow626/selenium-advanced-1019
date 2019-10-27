@@ -1,4 +1,4 @@
-package pages;
+package pages.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,9 +13,9 @@ import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class BasePage {
-    WebDriver driver;
-    WebDriverWait defaultWait;
-    Actions actionDriver;
+    private WebDriver driver;
+    private WebDriverWait defaultWait;
+    private Actions actionDriver;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -24,43 +24,55 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void click(WebElement element) {
-        System.out.println("klikam w element + " + element.getText());
+    protected WebDriver getDriver() {
+        return driver;
+    }
+
+    protected WebDriverWait getDefaultWait() {
+        return defaultWait;
+    }
+
+    protected Actions getActionDriver() {
+        return actionDriver;
+    }
+
+    protected void click(WebElement element) {
+        System.out.println("Klikam w element + " + element.getText());
         element.click();
     }
 
-    public void sendKeys(WebElement element, String text) {
+    protected void sendKeys(WebElement element, String text) {
         System.out.println("Wpisuję: " + text);
         element.sendKeys(text);
     }
 
-    public void elementToBeClickable(WebElement element) {
+    protected void elementToBeClickable(WebElement element) {
         defaultWait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public WebElement elementToBeClickable(By by) {
+    protected WebElement elementToBeClickable(By by) {
         return defaultWait.until(ExpectedConditions.elementToBeClickable(by));
     }
 
-    public void visibilityOf(WebElement element) {
+    protected void visibilityOf(WebElement element) {
         defaultWait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public WebElement visibilityOf(By by) {
+    protected WebElement visibilityOf(By by) {
         return defaultWait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
-    public void hoverOverElement(WebElement element) {
+    protected void hoverOverElement(WebElement element) {
         actionDriver.moveToElement(element).perform();
     }
 
-    WebElement getRandomElement(List<WebElement> elements) {
+    protected WebElement getRandomElement(List<WebElement> elements) {
         Random rnd = new Random();
         int randomNumber = rnd.nextInt(elements.size() - 1);
         return elements.get(randomNumber);
     }
 
-    public boolean isPresent(WebElement element) {
+    protected boolean isPresent(WebElement element) {
         try {
             return element.isDisplayed();
         } catch (NoSuchElementException e) {

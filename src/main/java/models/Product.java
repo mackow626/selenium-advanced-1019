@@ -25,12 +25,12 @@ public class Product {
         updatePrice();
     }
 
-    public void addQuantity(int quantity){
-        this.quantity+=quantity;
+    public void addQuantity(int quantity) {
+        this.quantity += quantity;
         updatePrice();
     }
 
-    private void updatePrice(){
+    private void updatePrice() {
         totalPrice = price.multiply(new BigDecimal(quantity));
     }
 
