@@ -59,7 +59,8 @@ public class ProductMiniaturePage extends BasePage {
     public BigDecimal getDiscountValue() {
         return new BigDecimal(discountLabel.getText()
                 .replace("%", "")
-                .replace("-", ""));
+                .replace("-", ""))
+                .divide(new BigDecimal(100));
     }
 
     public void open() {
