@@ -9,13 +9,13 @@ public class Order {
     private BigDecimal totalOrderPrice;
 
     public Order() {
-        this.products = new ArrayList<>();
+        products = new ArrayList<>();
     }
 
     private void updateTotalPrice() {
         totalOrderPrice = new BigDecimal(0);
         for (Product product : products) {
-            totalOrderPrice.add(product.getTotalPrice());
+            totalOrderPrice = totalOrderPrice.add(product.getTotalPrice());
         }
     }
 

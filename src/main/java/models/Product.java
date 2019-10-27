@@ -5,18 +5,18 @@ import java.math.BigDecimal;
 public class Product {
     private String name;
     private BigDecimal price;
+    private int quantity;
+    private BigDecimal totalPrice;
 
     public int getQuantity() {
         return quantity;
     }
 
-    private int quantity;
 
     public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    private BigDecimal totalPrice;
 
     public Product(String name, BigDecimal price, int quantity) {
         this.name = name;

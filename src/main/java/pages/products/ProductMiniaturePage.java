@@ -68,4 +68,15 @@ public class ProductMiniaturePage extends BasePage {
         click(name);
     }
 
+    @Override
+    public String toString() {
+        String details = "Product name " + getName()
+                + " price: " + getPrice()
+                + " is new: " + isNew();
+        if (isDiscounted()) {
+            details += " price before discount " + getPriceBeforeDiscount()
+                    + " and discounted by: " + discountLabel.getText();
+        }
+        return details;
+    }
 }
